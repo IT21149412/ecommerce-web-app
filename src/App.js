@@ -6,31 +6,45 @@ import CSRRoutes from './routes/CSRRoutes';
 import Login from './pages/login/Login';
 import NotFound from './pages/NotFound';
 import { AuthContext } from './contexts/AuthContext';
+import Header from './components/Header/Header';
+import './App.scss'; // Main styles for app layout
 
 function App() {
   const { user } = useContext(AuthContext);
   const [userRole, setUserRole] = useState(null);
 
   useEffect(() => {
-    // Check for role in context or localStorage and set userRole
-    const role = user?.role || localStorage.getItem('role');
-    setUserRole(role);
+    const storedRole = localStorage.getItem('role'); // Retrieve role from localStorage
+    if (user?.role) {
+      setUserRole(user.role); // If user exists and has a role, set it
+      localStorage.setItem('role', user.role); // Sync with localStorage
+    } else if (storedRole) {
+      setUserRole(storedRole); // If only localStorage has the role, use it
+    } else {
+      setUserRole(null); // Set to null if no role is found
+    }
   }, [user]);
 
   return (
     <Router>
-      <Routes>
-        {/* Redirect to respective dashboard based on the role */}
-        <Route
-          path="/"
-          element={userRole ? <Navigate to={`/${userRole.toLowerCase()}/dashboard`} /> : <Navigate to="/login" />}
-        />
-        <Route path="/login" element={<Login />} />
-        {userRole === 'Administrator' && <Route path="/admin/*" element={<AdminRoutes />} />}
-        {userRole === 'Vendor' && <Route path="/vendor/*" element={<VendorRoutes />} />}
-        {userRole === 'CSR' && <Route path="/csr/*" element={<CSRRoutes />} />}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Header />
+      {userRole ? (
+        <div className="main-content">
+          <Routes>
+            <Route path="/" element={<Navigate to={`/${userRole.toLowerCase()}/dashboard`} />} />
+            {userRole === 'Administrator' && <Route path="/admin/*" element={<AdminRoutes />} />}
+            {userRole === 'Vendor' && <Route path="/vendor/*" element={<VendorRoutes />} />}
+            {userRole === 'CSR' && <Route path="/csr/*" element={<CSRRoutes />} />}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+      ) : (
+        <Routes>
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      )}
     </Router>
   );
 }

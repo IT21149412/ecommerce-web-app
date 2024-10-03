@@ -4,24 +4,28 @@ import VendorDashboard from '../pages/vendor/Dashboard';
 import ProductManagement from '../pages/vendor/ProductManagement';
 import InventoryManagement from '../pages/vendor/InventoryManagement';
 import OrderManagement from '../pages/vendor/OrderManagement';
-import { AuthContext } from '../contexts/AuthContext';  // Import the Auth context
+import { AuthContext } from '../contexts/AuthContext';
+import Sidebar from '../components/Sidebar/Sidebar'; // Sidebar component
 
 const VendorRoutes = () => {
-  const { user } = useContext(AuthContext);  // Get the current user from the context
+  const { user } = useContext(AuthContext);
 
-  // Check if the user is authenticated and has the vendor role
   if (!user || user.role !== 'Vendor') {
-    return <Navigate to="/login" replace />;  // Redirect to login if not authenticated or not a vendor
+    return <Navigate to="/login" replace />;
   }
 
-  // Render the vendor routes if the user is authenticated as vendor
   return (
-    <Routes>
-      <Route path="/dashboard" element={<VendorDashboard />} />
-      <Route path="/products" element={<ProductManagement />} />
-      <Route path="/inventory" element={<InventoryManagement />} />
-      <Route path="/orders" element={<OrderManagement />} />
-    </Routes>
+    <div className="main-layout">
+      <Sidebar /> {/* Only include the sidebar for vendor pages */}
+      <div className="main-content">
+        <Routes>
+          <Route path="/dashboard" element={<VendorDashboard />} />
+          <Route path="/products" element={<ProductManagement />} />
+          <Route path="/inventory" element={<InventoryManagement />} />
+          <Route path="/orders" element={<OrderManagement />} />
+        </Routes>
+      </div>
+    </div>
   );
 };
 

@@ -1,29 +1,39 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';  
 import { loginUser } from '../../services/AuthService';
+import './Login.scss';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const { login } = useContext(AuthContext);  
+  const { user, login } = useContext(AuthContext);  
   const navigate = useNavigate();
+
+  // Redirect if the user is already logged in
+  useEffect(() => {
+    if (user) {
+      if (user.role === 'Administrator') {
+        navigate('/admin/dashboard');
+      } else if (user.role === 'Vendor') {
+        navigate('/vendor/dashboard');
+      } else if (user.role === 'CSR') {
+        navigate('/csr/dashboard');
+      }
+    }
+  }, [user, navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await loginUser({ email, password });  // Call login API and get token and role
-      const { token, role } = response;  // Extract token and role from the API response
+      const response = await loginUser({ email, password });
+      const { token, role } = response;
 
       // Save the token and role in the AuthContext
-      login({ token, role }); 
-      
-      console.log('User role:', role);
-      console.log('Redirecting to:', role === 'Administrator' ? '/admin/dashboard' : role === 'Vendor' ? '/vendor/dashboard' : '/csr/dashboard');
+      login({ token, role });
 
-
-      // Use `navigate` function to redirect after successful login based on role
+      // Redirect after successful login based on role
       if (role === 'Administrator') {
         navigate('/admin/dashboard');
       } else if (role === 'Vendor') {
@@ -39,24 +49,39 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleLogin}>
-        <label>Email:</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <label>Password:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Login</button>
-      </form>
+    <div className="login-container">
+      <div className="row">
+        <div className="col-md-6 p-0">
+          <img
+            src={require('../../assets/images/login_img.jpg')}
+            alt="Login Visual"
+            className="img-fluid h-100 login-image"
+          />
+        </div>
+        <div className="col-md-6 form-container">
+          <form onSubmit={handleLogin}>
+            <h2>Login</h2>
+            {error && <p>{error}</p>}
+            <div className="form-group">
+              <label>Email:</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="form-group">
+              <label>Password:</label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <button type="submit" className="btn">Login</button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

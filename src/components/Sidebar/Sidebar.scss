@@ -1,0 +1,32 @@
+.sidebar {
+    width: 250px;
+    background-color: #012c5f;
+    color: white;
+    height: calc(100vh - 60px); /* Adjust height considering the header */
+    padding-top: 30px;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 20px;
+    display: block;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sidebar a:hover {
+    background-color: #080f3b;
+  }
+  
+  .sidebar .active-link {
+    background-color: #000000; /* Highlight the current link */
+    font-weight: bold; /* Optional: Make the active link text bold */
+  }
+  

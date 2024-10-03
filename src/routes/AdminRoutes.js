@@ -4,24 +4,28 @@ import AdminDashboard from '../pages/admin/Dashboard';
 import ManageUsers from '../pages/admin/ManageUsers';
 import ManageVendors from '../pages/admin/ManageVendors';
 import OrderManagement from '../pages/admin/OrderManagement';
-import { AuthContext } from '../contexts/AuthContext';  // Import the Auth context
+import { AuthContext } from '../contexts/AuthContext';
+import Sidebar from '../components/Sidebar/Sidebar'; // Sidebar component
 
 const AdminRoutes = () => {
-  const { user } = useContext(AuthContext);  // Get the current user from the context
+  const { user } = useContext(AuthContext);
 
-  // Check if the user is authenticated and has the admin role
   if (!user || user.role !== 'Administrator') {
-    return <Navigate to="/login" replace />;  // Redirect to login if not authenticated or not an admin
+    return <Navigate to="/login" replace />;
   }
 
-  // Render the admin routes if the user is authenticated as an admin
   return (
-    <Routes>
-      <Route path="/dashboard" element={<AdminDashboard />} />
-      <Route path="/users" element={<ManageUsers />} />
-      <Route path="/vendors" element={<ManageVendors />} />
-      <Route path="/orders" element={<OrderManagement />} />
-    </Routes>
+    <div className="main-layout">
+      <Sidebar /> {/* Only include the sidebar for admin pages */}
+      <div className="main-content">
+        <Routes>
+          <Route path="/dashboard" element={<AdminDashboard />} />
+          <Route path="/users" element={<ManageUsers />} />
+          <Route path="/vendors" element={<ManageVendors />} />
+          <Route path="/orders" element={<OrderManagement />} />
+        </Routes>
+      </div>
+    </div>
   );
 };
 

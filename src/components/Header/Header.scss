@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+.header-container {
+  background-color: #0066cc; /* Bluish theme */
+  padding: 15px 30px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Adding a more prominent shadow to the header */
+  display: flex;
+  justify-content: space-between; /* Align left and right items */
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensures the header stays on top of other elements */
+  height: 80px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;  /* Rounded edges */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Soft shadow for the logo */
+  margin-right: 20px;
+}
+
+.header-title {
+  font-family: 'Montserrat', sans-serif;  /* Modern, clean font */
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);  /* Add shadow to the title */
+}
+
+.header-right {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  align-items: center;
+}
+
+.header-link {
+  font-size: 1.2rem;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 20px;
+  margin-left: 15px;
+  background-color: #005bb5;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Soft shadow for the button */
+  transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.header-link:hover {
+  background-color: #004c99;  /* Darken the background on hover */
+}
+
+.logout-button {
+  background-color: #014589;  /* Different color for the logout button */
+}
+
+.logout-button:hover {
+  background-color: #012d59;  /* Darken on hover */
+}
+
+@media (max-width: 768px) {
+  .header-title {
+    font-size: 1.5rem;  /* Adjust font size for smaller screens */
+  }
+
+  .header-logo {
+    width: 60px;
+    height: 60px; /* Adjust logo size for smaller screens */
+  }
+
+  .header-link {
+    font-size: 1rem;
+    padding: 8px 15px; /* Adjust button size for smaller screens */
+  }
+}

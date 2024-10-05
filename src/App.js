@@ -5,6 +5,7 @@ import VendorRoutes from './routes/VendorRoutes';
 import CSRRoutes from './routes/CSRRoutes';
 import Login from './pages/login/Login';
 import NotFound from './pages/NotFound';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import { AuthContext } from './contexts/AuthContext';
 import Header from './components/Header/Header';
 import './App.scss'; // Main styles for app layout

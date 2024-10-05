@@ -1,0 +1,202 @@
+/* General Layout */
+.manage-users-container {
+    max-width: 1000px;
+    margin-left: -25%;
+    margin-right: -25%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .manage-users-container h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .manage-users-container h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .alert-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 12px;
+    border: 1px solid #c3e6cb;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Search and Filter */
+  .search-filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-bar {
+    width: 60%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+  }
+  
+  .filter-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .btn-filter {
+    padding: 8px 16px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-filter:hover,
+  .active-filter {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  /* Button Styling */
+  button {
+    cursor: pointer;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+  }
+  
+  button:hover {
+    opacity: 0.9;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .btn-toggle-status.activate {
+    background-color: rgba(40, 167, 69, 0.5);
+  }
+  
+  .btn-toggle-status.deactivate {
+    background-color: rgba(220, 53, 69, 0.5);
+  }
+  
+  /* Table Styling */
+  .users-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .users-table th,
+  .users-table td {
+    padding: 12px;
+    border: 1px solid #dee2e6;
+  }
+  
+  .users-table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .users-table td {
+    text-align: left;
+  }
+  
+  .active-status {
+    background-color: rgba(40, 167, 69, 0.2);
+    color: #155724;
+  }
+  
+  .deactivated-status {
+    background-color: rgba(220, 53, 69, 0.2);
+    color: #721c24;
+  }
+  
+  /* Icons */
+  .icon-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  .icon-button i {
+    color: #555;
+  }
+  
+  .icon-button:hover i {
+    color: #007bff;
+  }
+  
+  /* Modal Styling */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .modal-content h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .modal-content .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .modal-content label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  .modal-content .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #aaa;
+  }
+  
+  .close-button:hover {
+    color: #333;
+  }
+  

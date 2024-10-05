@@ -16,7 +16,7 @@ const AdminRoutes = () => {
 
   return (
     <div className="main-layout">
-      <Sidebar /> {/* Only include the sidebar for admin pages */}
+      <Sidebar /> 
       <div className="main-content">
         <Routes>
           <Route path="/dashboard" element={<AdminDashboard />} />

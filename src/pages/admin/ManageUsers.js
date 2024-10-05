@@ -11,7 +11,7 @@ const ManageUsers = () => {
     name: '',
     email: '',
     role: 'CSR',
-    password: ''
+    password: ''  // Plain password here
   });
   const [editUser, setEditUser] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -40,7 +40,8 @@ const ManageUsers = () => {
   const handleCreateUser = async (e) => {
     e.preventDefault();
     try {
-      await createUser(newUser);
+      // When creating a new user, send the plain password field as "password"
+      await createUser(newUser);  // The createUser function will now send the password as "password"
       fetchUsers();
       showAlert('User added successfully!');
       closeModal();
@@ -48,6 +49,9 @@ const ManageUsers = () => {
       console.error('Error creating user:', error);
     }
   };
+  
+  
+  
 
   const handleUpdateUser = async (user) => {
     try {

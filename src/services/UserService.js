@@ -21,20 +21,30 @@ export const createUser = async (user) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  return await axios.post(`${API_URL}/api/user/register`, user, config);
+
+  // Send the plain password field as "password" (not "passwordHash")
+  const userPayload = {
+    ...user,
+    password: user.password  // Send the plain password as "password"
+  };
+
+  return await axios.post(`${API_URL}/api/user/register`, userPayload, config);
 };
+
+
+
+
 
 // Update an existing user
 export const updateUser = async (id, user) => {
-    const token = localStorage.getItem('token');
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    
-    return await axios.put(`${API_URL}/api/user/${id}/update`, user, config);
+  const token = localStorage.getItem('token');
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   };
+  return await axios.put(`${API_URL}/api/user/${id}/update`, user, config);
+};
 
 // Delete a user
 export const deleteUser = async (id) => {

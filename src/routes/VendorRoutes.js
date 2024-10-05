@@ -5,7 +5,8 @@ import ProductManagement from '../pages/vendor/ProductManagement';
 import InventoryManagement from '../pages/vendor/InventoryManagement';
 import OrderManagement from '../pages/vendor/OrderManagement';
 import { AuthContext } from '../contexts/AuthContext';
-import Sidebar from '../components/Sidebar/Sidebar'; // Sidebar component
+import Sidebar from '../components/Sidebar/Sidebar';  
+import ProductDetails from '../pages/vendor/ProductDetails';
 
 const VendorRoutes = () => {
   const { user } = useContext(AuthContext);
@@ -23,6 +24,7 @@ const VendorRoutes = () => {
           <Route path="/products" element={<ProductManagement />} />
           <Route path="/inventory" element={<InventoryManagement />} />
           <Route path="/orders" element={<OrderManagement />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
         </Routes>
       </div>
     </div>

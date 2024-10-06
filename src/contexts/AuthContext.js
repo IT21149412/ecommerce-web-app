@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
+import {jwtDecode} from 'jwt-decode';  // Import jwt-decode to decode the JWT
 
 export const AuthContext = createContext();
 
@@ -8,17 +9,26 @@ export const AuthProvider = ({ children }) => {
   // Load user data from localStorage if available when the app initializes
   useEffect(() => {
     const token = localStorage.getItem('token');
-    const role = localStorage.getItem('role');
-    if (token && role) {
-      setUser({ token, role });  // Set user from localStorage
+    if (token) {
+      const decodedToken = jwtDecode(token);  // Decode the token to get the user details
+      setUser({
+        token,
+        role: decodedToken.role,
+        name: decodedToken.name, // Assuming the user's name is stored in the token under 'name'
+      });
     }
   }, []);
 
   // Save the user token and role in both context state and localStorage
   const login = (userData) => {
-    setUser(userData);
+    const decodedToken = jwtDecode(userData.token); // Decode the token
+    setUser({
+      token: userData.token,
+      role: decodedToken.role,
+      name: decodedToken.name,  // Extract and set the user's name from the token
+    });
     localStorage.setItem('token', userData.token);  // Save token in localStorage
-    localStorage.setItem('role', userData.role);    // Save role in localStorage
+    localStorage.setItem('role', decodedToken.role);    // Save role in localStorage
   };
 
   const logout = () => {

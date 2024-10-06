@@ -1,0 +1,158 @@
+.manage-vendors-container {
+  padding: 20px;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.vendor-card {
+  padding: 25px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background-color: #fff;
+  max-width: 300px;
+  width: 200px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.average-rating-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.rating-number {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.star-rating {
+  display: flex;
+}
+
+.filled-star {
+  color: gold;
+}
+
+.rating-distribution {
+  margin-top: 10px;
+}
+
+.rating-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.star-label {
+  margin-right: 5px;
+  font-size: 0.9rem;
+}
+
+.bar {
+  width: 100%;
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bar-filled {
+  height: 100%;
+  background-color: #4caf50; /* Change color as needed */
+}
+
+.total-reviews {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #757575;
+}
+
+
+.review-modal {
+  background: white;
+  padding: 50px;
+  max-width: 600px;
+  margin-top: 150px;
+  margin-left: 35%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(163, 179, 183, 0.848);
+  position: relative;
+}
+
+h3 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.sort-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.sort-buttons button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sort-buttons button.active {
+  background-color: #0056b3;
+}
+
+.reviews-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.review-item {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+.review-rating {
+  display: flex;
+  gap: 5px;
+}
+
+.review-date {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.close-modal-button {
+  display: block;
+  width: 100px;
+  margin: 20px auto;
+  padding: 10px;
+  border: none;
+  background-color: #f44336;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.close-modal-button:hover {
+  background-color: #d32f2f;
+}
+
+.filled-star {
+  color: gold; /* Or any other color to represent a filled star */
+}
+

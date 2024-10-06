@@ -1,0 +1,99 @@
+.customer-account-approval-container {
+  padding: 20px;
+  width: 100%;
+  background-color: transparent;
+  min-height: 100vh;
+}
+
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 26px;
+  color: #333;
+}
+
+.search-filter-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  width: 60%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+}
+
+.table-container {
+  margin-top: 20px;
+  overflow-x: auto; /* Ensures horizontal scrolling for small screens */
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-table th,
+.users-table td {
+  padding: 12px;
+  border: 1px solid #dee2e6;
+}
+
+.users-table th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+  text-align: left;
+}
+
+.users-table td {
+  text-align: left;
+}
+
+.active-status {
+  background-color: rgba(40, 167, 69, 0.2);
+  color: #155724;
+}
+
+.deactivated-status {
+  background-color: rgba(220, 53, 69, 0.2);
+  color: #721c24;
+}
+
+.btn-toggle-status {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-toggle-status.activate {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-toggle-status.deactivate {
+  background-color: #dc3545;
+  color: white;
+}
+
+.alert-message {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 12px;
+  border: 1px solid #c3e6cb;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  text-align: center;
+}

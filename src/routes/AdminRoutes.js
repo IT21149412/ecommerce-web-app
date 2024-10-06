@@ -5,6 +5,7 @@ import ManageUsers from '../pages/admin/ManageUsers';
 import ManageVendors from '../pages/admin/ManageVendors';
 import OrderManagement from '../pages/admin/OrderManagement';
 import { AuthContext } from '../contexts/AuthContext';
+import ManageProductsAndCategories from '../pages/admin/ManageProductsAndCategories';
 import Sidebar from '../components/Sidebar/Sidebar'; // Sidebar component
 
 const AdminRoutes = () => {
@@ -17,14 +18,13 @@ const AdminRoutes = () => {
   return (
     <div className="main-layout">
       <Sidebar /> 
-      <div className="main-content">
         <Routes>
           <Route path="/dashboard" element={<AdminDashboard />} />
           <Route path="/users" element={<ManageUsers />} />
+          <Route path="/products" element={<ManageProductsAndCategories />} />
           <Route path="/vendors" element={<ManageVendors />} />
           <Route path="/orders" element={<OrderManagement />} />
         </Routes>
-      </div>
     </div>
   );
 };

@@ -23,10 +23,16 @@ const Sidebar = () => {
             Manage Users
           </NavLink>
           <NavLink
+            to="/admin/products"
+            className={({ isActive }) => (isActive ? 'active-link' : '')}
+          >
+            Manage Products and Categories
+          </NavLink>
+          <NavLink
             to="/admin/vendors"
             className={({ isActive }) => (isActive ? 'active-link' : '')}
           >
-            Manage Vendors
+            Vendor Reviews
           </NavLink>
           <NavLink
             to="/admin/orders"

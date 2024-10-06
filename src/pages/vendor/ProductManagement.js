@@ -9,6 +9,7 @@ import {
 } from "../../services/ProductService";
 import "./ProductManagement.scss";
 import { useNavigate } from "react-router-dom";
+import { getCategories } from "../../services/CategoryService";
 
 const ProductManagement = () => {
   const [products, setProducts] = useState([]);
@@ -30,6 +31,8 @@ const ProductManagement = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
+  const [categories, setCategories] = useState([]);
+
   const navigate = useNavigate();
 
   const viewProductDetails = (id) => {
@@ -38,6 +41,7 @@ const ProductManagement = () => {
 
   useEffect(() => {
     fetchProducts();
+    fetchCategories(); 
   }, []);
 
   const fetchProducts = async () => {
@@ -47,6 +51,15 @@ const ProductManagement = () => {
       setFilteredProducts(response.data);
     } catch (error) {
       console.error("Error fetching products:", error);
+    }
+  };
+
+  const fetchCategories = async () => {
+    try {
+      const response = await getCategories();
+      setCategories(response.data);   
+    } catch (error) {
+      console.error("Error fetching categories:", error);
     }
   };
 
@@ -412,7 +425,26 @@ const ProductManagement = () => {
                   )}
                 </div>
               </div>
-
+              <div className="form-group">
+                <label>Category*</label>
+                <select
+                  name="categoryId"
+                  value={newProduct.categoryId}
+                  onChange={handleInputChange}
+                  required
+                  className="form-control"
+                >
+                  <option value="">Select Category</option>
+                  {categories.map((category) => (
+                    <option key={category.id} value={category.id}>
+                      {category.name}
+                    </option>
+                  ))}
+                </select>
+                {validationErrors.categoryId && (
+                  <p className="error">{validationErrors.categoryId}</p>
+                )}
+              </div>
               {/* Form Actions */}
               <div className="form-actions">
                 <button type="submit" className="btn-primary">

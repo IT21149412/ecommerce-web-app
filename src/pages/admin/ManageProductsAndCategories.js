@@ -17,6 +17,7 @@ const ManageProductsCategories = () => {
   const [products, setProducts] = useState([]);
   const [vendors, setVendors] = useState([]); // State for vendors
   const [activeTab, setActiveTab] = useState('products'); // To toggle between products and categories
+  const [lowStockView, setLowStockView] = useState(false); // Toggle for Low Stock view
   const [newCategory, setNewCategory] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [alertMessage, setAlertMessage] = useState('');
@@ -127,6 +128,9 @@ const ManageProductsCategories = () => {
     return category ? category.name : 'Unknown';
   };
 
+  // Filter Low Stock Products
+  const lowStockProducts = products.filter((product) => product.stock < 5);
+
   return (
     <div className="manage-products-categories-container">
       <h2>Manage Products and Categories</h2>
@@ -157,12 +161,20 @@ const ManageProductsCategories = () => {
           onChange={(e) => setSearchQuery(e.target.value)}
           className="search-bar"
         />
+        {activeTab === 'products' && (
+          <button 
+            className={`low-stock-toggle ${lowStockView ? 'active-low-stock' : ''}`} 
+            onClick={() => setLowStockView(!lowStockView)}
+          >
+            {lowStockView ? 'View All Products' : 'Low Stock Products'}
+          </button>
+        )}
       </div>
 
       {/* Products Table */}
       {activeTab === 'products' && (
         <div>
-          <h3>Product List</h3>
+          <h3>{lowStockView ? 'Low Stock Products' : 'Product List'}</h3>
           <table className="products-table">
             <thead>
               <tr>
@@ -177,8 +189,8 @@ const ManageProductsCategories = () => {
               </tr>
             </thead>
             <tbody>
-              {filteredProducts.map((product) => (
-                <tr key={product.id}>
+              {(lowStockView ? lowStockProducts : filteredProducts).map((product) => (
+                <tr key={product.id} className={product.stock < 5 ? 'low-stock' : ''}>
                   <td>{product.name}</td>
                   <td>{product.description}</td>
                   <td>{product.price}</td>
@@ -197,6 +209,9 @@ const ManageProductsCategories = () => {
                       <button className="btn-toggle-status activate" onClick={() => handleToggleProductStatus(product)}>
                         Activate
                       </button>
+                    )}
+                    {product.stock < 5 && (
+                      <button className="btn-notify-vendor">Notify vendor of low stock</button>
                     )}
                   </td>
                 </tr>

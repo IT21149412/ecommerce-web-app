@@ -258,6 +258,7 @@ const ProductManagement = () => {
             <th>Description</th>
             <th>Price</th>
             <th>Stock</th>
+            <th>Low Stock</th> 
             <th>Status</th>
             <th>Actions</th>
           </tr>
@@ -269,6 +270,7 @@ const ProductManagement = () => {
               <td>{product.description}</td>
               <td>{product.price}</td>
               <td>{product.stock}</td>
+              <td>{product.isLowStock ? 'Yes' : 'No'}</td> 
               <td className={product.isActive ? 'active-status' : 'deactivated-status'}>
                 {product.isActive ? 'Active' : 'Deactivated'}
               </td>

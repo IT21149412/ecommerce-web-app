@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import CSRDashboard from '../pages/csr/Dashboard';
-import OrderManagement from '../pages/csr/OrderManagement';
+import OrderManagement from '../pages/csr/OrderStatusManagement';
 import CustomerAccountApproval from '../pages/csr/CustomerAccountApproval';
 import { AuthContext } from '../contexts/AuthContext';
 import Sidebar from '../components/Sidebar/Sidebar'; // Sidebar component

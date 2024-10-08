@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import AdminDashboard from '../pages/admin/Dashboard';
 import ManageUsers from '../pages/admin/ManageUsers';
 import ManageVendors from '../pages/admin/ManageVendors';
-import OrderManagement from '../pages/admin/OrderManagement';
+import OrderManagement from '../pages/admin/OrderStatusManagement';
 import { AuthContext } from '../contexts/AuthContext';
 import ManageProductsAndCategories from '../pages/admin/ManageProductsAndCategories';
 import Sidebar from '../components/Sidebar/Sidebar'; // Sidebar component

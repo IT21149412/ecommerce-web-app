@@ -98,6 +98,11 @@ const ManageProductsCategories = () => {
     fetchProducts();
   };
 
+  // Handle Notify Vendor button click
+  const handleNotifyVendor = () => {
+    showAlert('Notification Sent to Vendor!');
+  };
+
   const showAlert = (message) => {
     setAlertMessage(message);
     setTimeout(() => {
@@ -211,7 +216,7 @@ const ManageProductsCategories = () => {
                       </button>
                     )}
                     {product.stock < 5 && (
-                      <button className="btn-notify-vendor">Notify vendor of low stock</button>
+                      <button className="btn-notify-vendor" onClick={handleNotifyVendor}>Notify vendor of low stock</button>
                     )}
                   </td>
                 </tr>

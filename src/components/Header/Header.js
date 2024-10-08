@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import logo from '../../assets/logos/logo.JPG'; // Path to the logo
+import logo from '../../assets/logos/logo.JPG';  // Path to the logo
 import './Header.scss';
 import { AuthContext } from '../../contexts/AuthContext';  // Import AuthContext for user authentication status
-
+import NotificationDropdown from '../../pages/vendor/NotificationDropdown';
+ 
 const Header = () => {
   const { user, logout } = useContext(AuthContext);  // Access user and logout function from AuthContext
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const Header = () => {
   // Determine where the "Home" button should redirect
   const handleHomeClick = () => {
     if (user) {
-      const role = user.role.toLowerCase(); // Retrieve user role from context
+      const role = user.role.toLowerCase();  // Retrieve user role from context
       if (role === 'administrator') {
         navigate('/admin/dashboard');
       } else if (role === 'vendor') {
@@ -37,6 +38,9 @@ const Header = () => {
       </div>
       <nav className="header-right">
         {/* Home button */}
+        {user && user.role.toLowerCase() === 'vendor' && (
+          <NotificationDropdown />  // Show notification dropdown only for vendors
+        )}
         <button className="header-link" onClick={handleHomeClick}>
           {user ? 'Dashboard' : 'Home'}
         </button>

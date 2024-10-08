@@ -3,7 +3,7 @@ import axios from 'axios';
 const API_URL = 'http://localhost:5296/api/Product';
 
 // Fetch all products
-export const getProducts = async () => {
+export const getProducts = async () => { 
   const token = localStorage.getItem('token');
   const config = {
     headers: {
@@ -12,6 +12,17 @@ export const getProducts = async () => {
     },
   };
   return await axios.get(`${API_URL}`, config);   
+};
+
+// Fetch all products by vendor
+export const getProductsByVendor = async (vendorId) => {
+  const token = localStorage.getItem('token');
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  return await axios.get(`${API_URL}/vendor/${vendorId}`, config); // Fetch vendor-specific products
 };
 
 // Fetch a single product by ID

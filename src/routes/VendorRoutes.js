@@ -7,6 +7,8 @@ import OrderManagement from '../pages/vendor/OrderManagement';
 import { AuthContext } from '../contexts/AuthContext';
 import Sidebar from '../components/Sidebar/Sidebar';  
 import ProductDetails from '../pages/vendor/ProductDetails';
+import OrderDetails from '../pages/vendor/OrderDetails';
+import NotificationPanel from '../pages/vendor/NotificationPanel';
 
 const VendorRoutes = () => {
   const { user } = useContext(AuthContext);
@@ -25,7 +27,10 @@ const VendorRoutes = () => {
           <Route path="/inventory" element={<InventoryManagement />} />
           <Route path="/orders" element={<OrderManagement />} />
           <Route path="/product/:id" element={<ProductDetails />} />
-        </Routes>
+          <Route path="/Order/:id" element={<OrderDetails />} />
+          <Route path="/notifications" element={<NotificationPanel />} /> {/* No need for vendorId */}
+
+          </Routes>
       </div>
     </div>
   );

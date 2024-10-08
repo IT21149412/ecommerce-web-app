@@ -1,0 +1,50 @@
+.vendor-order-management {
+    padding: 20px;
+  }
+  
+  .order-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .order-table th, .order-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .order-table th {
+    background-color: #f4f4f4;
+  }
+  
+  .btn-deliver {
+    background-color: green;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btn-ready {
+    background-color: orange;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btn-cancel {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btn-deliver:disabled,
+  .btn-ready:disabled,
+  .btn-cancel:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  

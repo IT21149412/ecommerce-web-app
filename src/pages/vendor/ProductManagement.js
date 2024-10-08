@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
-  getProducts,
+  getProductsByVendor,
   createProduct,
   updateProduct,
   deleteProduct,
@@ -10,6 +10,7 @@ import {
 import "./ProductManagement.scss";
 import { useNavigate } from "react-router-dom";
 import { getCategories } from "../../services/CategoryService";
+import { jwtDecode } from 'jwt-decode';
 
 const ProductManagement = () => {
   const [products, setProducts] = useState([]);
@@ -32,6 +33,14 @@ const ProductManagement = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [categories, setCategories] = useState([]);
+  const token = localStorage.getItem('token');
+  let vendorId = null;
+  
+  if (token) {
+    const decodedToken = jwtDecode(token);
+    vendorId = decodedToken.nameid; 
+    // console.log("decode",decodedToken)
+  }
 
   const navigate = useNavigate();
 
@@ -46,7 +55,7 @@ const ProductManagement = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await getProducts();
+      const response = await getProductsByVendor(vendorId);
       setProducts(response.data);
       setFilteredProducts(response.data);
     } catch (error) {
@@ -249,6 +258,7 @@ const ProductManagement = () => {
             <th>Description</th>
             <th>Price</th>
             <th>Stock</th>
+            <th>Low Stock</th> 
             <th>Status</th>
             <th>Actions</th>
           </tr>
@@ -260,6 +270,7 @@ const ProductManagement = () => {
               <td>{product.description}</td>
               <td>{product.price}</td>
               <td>{product.stock}</td>
+              <td>{product.isLowStock ? 'Yes' : 'No'}</td> 
               <td className={product.isActive ? 'active-status' : 'deactivated-status'}>
                 {product.isActive ? 'Active' : 'Deactivated'}
               </td>
